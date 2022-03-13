@@ -25,7 +25,7 @@ from sklearn.model_selection import GridSearchCV
 #3-旬数 5-生长期名称 7-发育程度 8-发育期距平 12-日平均气温 13-积温距平 15-10cm 16-20cm 17-50cm
 #10 - 生长状况
 
-sc = np.load('./spring_corn.npy')
+sc = np.load('./rice2.npy')
 
 # # 旬数处理
 s1 = np.int32(sc[:,2])
@@ -36,17 +36,16 @@ sc[:,3] = s2
 # 生长期名称处理
 # a = np.where(sc[:,5]=='-9999')
 # sc[a] = '0'
-sc[np.where((sc[:,5]=='未进')|(sc[:,5]=='无')),5] = 0
+sc[np.where(sc[:,5]=='未进'),5] = 0
 sc[np.where(sc[:,5]=='播种'),5] = 1
 sc[np.where(sc[:,5]=='出苗'),5] = 2
-sc[np.where(sc[:,5]=='三叶'),5] = 3
-sc[np.where(sc[:,5]=='七叶'),5] = 4
-sc[np.where(sc[:,5]=='拔节'),5] = 5
-sc[np.where((sc[:,5]=='抽雄')|(sc[:,5]=='抽穗')),5] = 6
-sc[np.where(sc[:,5]=='开花'),5] = 7
-sc[np.where(sc[:,5]=='吐丝'),5] = 8
-sc[np.where(sc[:,5]=='乳熟'),5] = 9
-sc[np.where(sc[:,5]=='成熟'),5] = 10
+sc[np.where(sc[:,5]=='移栽'),5] = 3
+sc[np.where(sc[:,5]=='返青'),5] = 4
+sc[np.where(sc[:,5]=='分蘖'),5] = 5
+sc[np.where(sc[:,5]=='孕穗'),5] = 6
+sc[np.where(sc[:,5]=='抽穗'),5] = 7
+sc[np.where(sc[:,5]=='乳熟'),5] = 8
+sc[np.where(sc[:,5]=='成熟'),5] = 9
 
 # 发育程度处理
 sc[np.where((sc[:,7]=='-9999')|(sc[:,7]=='普遍期')),7] = 2
@@ -77,9 +76,9 @@ for recs in sc:
 # sc[np.where(sc[:,10]=='3')] = '0'
 
 res = sc[np.where(sc[:,0]!='0')]
-np.save('./spring_corn_res.npy',res)
+np.save('./rice2_res.npy',res)
 
-res = np.load('./spring_corn_res.npy')
+res = np.load('./rice2_res.npy')
 
 data = res[:,[0,1,3,5,7,9,11,12,13,14,15,16,17]].astype(int)
 label = res[:,8].astype(int)
