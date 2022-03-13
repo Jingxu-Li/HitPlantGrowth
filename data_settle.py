@@ -109,48 +109,63 @@ for recs in range(len(data_sp)):
         count = count + 1
         other.append(data_sp[recs])
     
-np.save('./spring_corn/spring_corn.npy',spring_corn)
-np.save('./winter_wheat/winter_wheat.npy',winter_wheat)
+#np.save('./spring_corn/spring_corn.npy',spring_corn)
+#np.save('./winter_wheat/winter_wheat.npy',winter_wheat)
+np.save('rape.npy',rape)#油菜
+np.save('rice1.npy',rice1)#一季稻
+np.save('rice2.npy',rice2)#晚稻
+np.save('rice3.npy',rice3)#早稻
+np.save('spring_wheat.npy',spring_wheat)#春小麦
+np.save('summer_corn.npy',summer_corn)#夏玉米
+np.save('winter_wheat.npy',winter_wheat)#冬小麦
 
 # Collect number of examples
 #%%
 from collections import Counter
 spring_corn_count = np.array(spring_corn)
-label = spring_corn_count[:,10]
+label = spring_corn_count[:,5]
 c = Counter(label)
+print("-----------春玉米------------")
 print(c)
 
 rape_count = np.array(rape)
-label = rape_count[:,10]
+label = rape_count[:,5]
 c = Counter(label)
+print("-----------油菜------------")
 print(c)
 
 rice1_count = np.array(rice1)
-label = rice1_count[:,10]
+label = rice1_count[:,5]
 c = Counter(label)
+print("-----------一季稻------------")
 print(c)
 
 rice2_count = np.array(rice2)
-label = rice2_count[:,10]
+label = rice2_count[:,5]
 c = Counter(label)
+print("-----------晚稻------------")
 print(c)
 
 rice3_count = np.array(rice3)
-label = rice3_count[:,10]
+label = rice3_count[:,5]
 c = Counter(label)
+print("-----------早稻------------")
 print(c)
 
 spring_wheat_count = np.array(spring_wheat)
-label = spring_wheat_count[:,10]
+label = spring_wheat_count[:,5]
 c = Counter(label)
+print("-----------春小麦------------")
 print(c)
 
 summer_corn_count = np.array(summer_corn)
-label = summer_corn_count[:,10]
+label = summer_corn_count[:,5]
 c = Counter(label)
+print("-----------夏玉米------------")
 print(c)
 
 winter_wheat_count = np.array(winter_wheat)
-label = winter_wheat_count[:,10]
+label = winter_wheat_count[:,5]
 c = Counter(label)
+print("-----------冬小麦------------")
 print(c)
